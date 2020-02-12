@@ -44,6 +44,9 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         alignItems: 'center',
     },
+    box: {
+        marginTop: 230,
+    },
     avatar: {
         margin: theme.spacing(1),
         backgroundColor: theme.palette.secondary.main,
@@ -63,14 +66,15 @@ export default function SignIn() {
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
-            <Grid item xs={false} sm={4} md={7} className={classes.image} />
-            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+            <Grid item xs={false} sm={4} md={12} className={classes.image} >
+                <Grid container justify = "center" className={classes.box}>
+            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square >
                 <div className={classes.paper}>
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        登录
                     </Typography>
                     <form className={classes.form} noValidate>
                         <TextField
@@ -125,6 +129,8 @@ export default function SignIn() {
                         </Box>
                     </form>
                 </div>
+            </Grid>
+                </Grid>
             </Grid>
         </Grid>
     );
