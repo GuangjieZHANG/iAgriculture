@@ -19,10 +19,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import Deposits from './Deposits';
-import ButtonBase from "@material-ui/core/ButtonBase";
+import SimpleCard from './SimpleCard';
+import VideoImage from "../img/video.jpg";
 import NPKChart from "./NPKChart";
-import Info from "./Info";
+import LeafletMap from "./LeafletMap";
 
 function Copyright() {
     return (
@@ -114,23 +114,21 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
     },
     img: {
-        margin: 'auto',
-        display: 'block',
-        maxWidth: '100%',
-        maxHeight: '100%',
-        backgroundImage: `url(${"../img/video.jpg"})`,
-    },
-    image: {
-        width: 480,
-        height: 316,
+        backgroundRepeat: 'no-repeat',
+        backgroundImage: `url(${VideoImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
     },
     fixedHeight: {
         height: 150,
     },
-    flxedHeightChart: {
+    fixedHeightChart: {
         height: 480,
     },
-    flxedHeightVideo: {
+    fixedHeightVideo: {
+        height: 316,
+    },
+    fixedHeightWeather: {
         height: 316,
     },
 }));
@@ -145,8 +143,9 @@ export default function Dashboard() {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-    const fixedHeightPaperChart = clsx(classes.paper, classes.flxedHeightChart);
-    const fixedHeightPaperVideo = clsx(classes.paper, classes.flxedHeightVideo);
+    const fixedHeightPaperChart = clsx(classes.paper, classes.fixedHeightChart);
+    const fixedHeightPaperVideo = clsx(classes.paper, classes.fixedHeightVideo);
+    const fixedHeightPaperWeather = clsx(classes.paper, classes.fixedHeightWeather);
 
     return (
         <div className={classes.root}>
@@ -163,7 +162,7 @@ export default function Dashboard() {
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        智慧果园
+                        陕西省榆林市米脂苹果园
                     </Typography>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
@@ -193,22 +192,57 @@ export default function Dashboard() {
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={2}>
-                        <Grid item lg={4}>
-                            <Paper className={fixedHeightPaperVideo}>
-                                <Info title = "陕西省榆林市米脂苹果园" geometry = "" surface = ""/>
-                            </Paper>
+                        <Grid item lg={6} container spacing={2}>
+                            {/* 土壤温度 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <SimpleCard title="土壤温度" value="27 ℃"/>
+                                </Paper>
+                            </Grid>
+                            {/* 土壤湿度 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <SimpleCard title="土壤湿度 " value="71.3 %"/>
+                                </Paper>
+                            </Grid>
+                            {/* 土壤酸碱度 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <SimpleCard title="土壤酸碱度" value="6.5"/>
+                                </Paper>
+                            </Grid>
+
+                            {/* 空气温度 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <SimpleCard title="空气温度" value="13 ℃"/>
+                                </Paper>
+                            </Grid>
+                            {/* 空气湿度 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <SimpleCard title="空气湿度" value="53.3 %"/>
+                                </Paper>
+                            </Grid>
+                            {/* 风向 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <SimpleCard title="风向" value="东北风"/>
+                                </Paper>
+                            </Grid>
+
                         </Grid>
 
                         {/* video */}
-                        <Grid item lg={8}>
+                        <Grid item lg={6}>
                             <Paper className={fixedHeightPaperVideo}>
-                                <img className={classes.img} alt="complex" />
+                                <Grid className={classes.img} lg={12} />
                             </Paper>
                         </Grid>
 
                         <Grid item lg={8}>
                             <Paper className={fixedHeightPaperChart}>
-
+                                <LeafletMap/>
                             </Paper>
                         </Grid>
 
@@ -217,47 +251,25 @@ export default function Dashboard() {
                                     <NPKChart/>
                                 </Paper>
                             </Grid>
+                        <Grid item lg={3}>
+                            <Paper className={fixedHeightPaperWeather}>
 
+                            </Paper>
+                        </Grid>
+                        <Grid item lg={3}>
+                            <Paper className={fixedHeightPaperWeather}>
 
-                        <Grid item lg={6} container spacing={2}>
-                            {/* 土壤温度 */}
-                            <Grid item lg={4}>
-                                <Paper className={fixedHeightPaper}>
-                                    <Deposits title="土壤温度" value="27 ℃"/>
-                                </Paper>
-                            </Grid>
-                            {/* 土壤湿度 */}
-                            <Grid item lg={4}>
-                                <Paper className={fixedHeightPaper}>
-                                    <Deposits title="土壤湿度 " value="71.3 %"/>
-                                </Paper>
-                            </Grid>
-                            {/* 土壤酸碱度 */}
-                            <Grid item lg={4}>
-                                <Paper className={fixedHeightPaper}>
-                                    <Deposits title="土壤酸碱度" value="6.5"/>
-                                </Paper>
-                            </Grid>
+                            </Paper>
+                        </Grid>
+                        <Grid item lg={3}>
+                            <Paper className={fixedHeightPaperWeather}>
 
-                            {/* 空气温度 */}
-                            <Grid item lg={4}>
-                                <Paper className={fixedHeightPaper}>
-                                    <Deposits title="空气温度" value="13 ℃"/>
-                                </Paper>
-                            </Grid>
-                            {/* 空气湿度 */}
-                            <Grid item lg={4}>
-                                <Paper className={fixedHeightPaper}>
-                                    <Deposits title="空气湿度" value="53.3 %"/>
-                                </Paper>
-                            </Grid>
-                            {/* 风向 */}
-                            <Grid item lg={4}>
-                                <Paper className={fixedHeightPaper}>
-                                    <Deposits title="风向" value="东北风"/>
-                                </Paper>
-                            </Grid>
+                            </Paper>
+                        </Grid>
+                        <Grid item lg={3}>
+                            <Paper className={fixedHeightPaperWeather}>
 
+                            </Paper>
                         </Grid>
                     </Grid>
                     <Box pt={4}>

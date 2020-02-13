@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Deposits(props) {
+export default function SimpleCard(props) {
     const classes = useStyles();
     return (
         <React.Fragment>
