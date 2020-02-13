@@ -22,6 +22,7 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import ButtonBase from "@material-ui/core/ButtonBase";
 
 function Copyright() {
     return (
@@ -112,8 +113,24 @@ const useStyles = makeStyles(theme => ({
         overflow: 'auto',
         flexDirection: 'column',
     },
+    img: {
+        margin: 'auto',
+        display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
+    },
+    image: {
+        width: 480,
+        height: 316,
+    },
     fixedHeight: {
-        height: 240,
+        height: 150,
+    },
+    flxedHeightChart: {
+        height: 280,
+    },
+    flxedHeightVideo: {
+        height: 316,
     },
 }));
 
@@ -127,6 +144,8 @@ export default function Dashboard() {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+    const fixedHeightPaperChart = clsx(classes.paper, classes.flxedHeightChart);
+    const fixedHeightPaperVideo = clsx(classes.paper, classes.flxedHeightVideo);
 
     return (
         <div className={classes.root}>
@@ -143,7 +162,7 @@ export default function Dashboard() {
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Dashboard
+                        智慧果园
                     </Typography>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
@@ -172,25 +191,118 @@ export default function Dashboard() {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
-                        {/* Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <Chart />
+                    <Grid container spacing={2}>
+                        <Grid item lg={6} container spacing={2}>
+
+                                {/* 土壤温度 */}
+                                <Grid item lg={4}>
+                                    <Paper className={fixedHeightPaper}>
+                                        <Deposits title="土壤温度" value="27 ℃"/>
+                                    </Paper>
+                                </Grid>
+                                {/* 土壤湿度 */}
+                                <Grid item lg={4}>
+                                    <Paper className={fixedHeightPaper}>
+                                        <Deposits title="土壤湿度 " value="71.3 %"/>
+                                    </Paper>
+                                </Grid>
+                                {/* 土壤酸碱度 */}
+                                <Grid item lg={4}>
+                                    <Paper className={fixedHeightPaper}>
+                                        <Deposits title="土壤酸碱度" value="6.5"/>
+                                    </Paper>
+                                </Grid>
+
+                                {/* 空气温度 */}
+                                <Grid item lg={4}>
+                                    <Paper className={fixedHeightPaper}>
+                                        <Deposits title="空气温度" value="13 ℃"/>
+                                    </Paper>
+                                </Grid>
+                                {/* 空气湿度 */}
+                                <Grid item lg={4}>
+                                    <Paper className={fixedHeightPaper}>
+                                        <Deposits title="空气湿度" value="53.3 %"/>
+                                    </Paper>
+                                </Grid>
+                                {/* 风向 */}
+                                <Grid item lg={4}>
+                                    <Paper className={fixedHeightPaper}>
+                                        <Deposits title="风向" value="东北风"/>
+                                    </Paper>
+                                </Grid>
+
+                        </Grid>
+
+                        {/* video */}
+                        <Grid item lg={6}>
+                            <Paper className={fixedHeightPaperVideo}>
+                                <ButtonBase className={classes.image}>
+                                    <img className={classes.img} alt="complex" src="../img/video.jpg" />
+                                </ButtonBase>
                             </Paper>
                         </Grid>
-                        {/* Recent Deposits */}
-                        <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
-                                <Deposits />
-                            </Paper>
-                        </Grid>
-                        {/* Recent Orders */}
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                                <Orders />
-                            </Paper>
-                        </Grid>
+
+
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaperVideo}>
+
+                                </Paper>
+                            </Grid>
+
+                            <Grid item lg={8}>
+                                <Paper className={fixedHeightPaperVideo}>
+
+                                </Paper>
+                            </Grid>
+
+
+
+                            <Grid item lg={3}>
+                                <Paper className={fixedHeightPaperChart}>
+                                    <Chart title="1 "/>
+                                </Paper>
+                            </Grid>
+                            <Grid item lg={3}>
+                                <Paper className={fixedHeightPaperChart}>
+                                    <Chart title="2 "/>
+                                </Paper>
+                            </Grid>
+                            <Grid item lg={3}>
+                                <Paper className={fixedHeightPaperChart}>
+                                    <Chart title="3 "/>
+                                </Paper>
+                            </Grid>
+                            <Grid item lg={3}>
+                                <Paper className={fixedHeightPaperChart}>
+                                    <Chart title="4 "/>
+                                </Paper>
+                            </Grid>
+
+
+
+                            <Grid item lg={3}>
+                                <Paper className={fixedHeightPaperChart}>
+                                    <Chart title="1 "/>
+                                </Paper>
+                            </Grid>
+                            <Grid item lg={3}>
+                                <Paper className={fixedHeightPaperChart}>
+                                    <Chart title="2 "/>
+                                </Paper>
+                            </Grid>
+                            <Grid item lg={3}>
+                                <Paper className={fixedHeightPaperChart}>
+                                    <Chart title="3 "/>
+                                </Paper>
+                            </Grid>
+                            <Grid item lg={3}>
+                                <Paper className={fixedHeightPaperChart}>
+                                    <Chart title="4 "/>
+                                </Paper>
+                            </Grid>
+
+
                     </Grid>
                     <Box pt={4}>
                         <Copyright />
