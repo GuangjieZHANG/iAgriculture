@@ -1,24 +1,25 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar/index';
+import Button from '@material-ui/core/Button/index';
+import CssBaseline from '@material-ui/core/CssBaseline/index';
+import TextField from '@material-ui/core/TextField/index';
+import FormControlLabel from '@material-ui/core/FormControlLabel/index';
+import Checkbox from '@material-ui/core/Checkbox/index';
+import Link from '@material-ui/core/Link/index';
+import Paper from '@material-ui/core/Paper/index';
+import Box from '@material-ui/core/Box/index';
+import Grid from '@material-ui/core/Grid/index';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography/index';
+import { makeStyles } from '@material-ui/core/styles/index';
+import BGImage from "../img/loginBg.png";
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                智慧农业
+                新盒子智能科技有限公司
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -31,7 +32,7 @@ const useStyles = makeStyles(theme => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://source.unsplash.com/random)',
+        backgroundImage: `url(${BGImage})`,
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
@@ -66,9 +67,9 @@ export default function SignIn() {
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline/>
-            <Grid item xs={false} sm={4} md={12} className={classes.image}>
+            <Grid item xs={false} sm={12} md={12} className={classes.image}>
                 <Grid container justify="center" className={classes.box}>
-                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                    <Grid item xs={10} sm={6} md={4} component={Paper} elevation={6} square>
                         <div className={classes.paper}>
                             <Avatar className={classes.avatar}>
                                 <LockOutlinedIcon/>
@@ -83,7 +84,7 @@ export default function SignIn() {
                                     required
                                     fullWidth
                                     id="email"
-                                    label="Email Address"
+                                    label="用户名"
                                     name="email"
                                     autoComplete="email"
                                     autoFocus
@@ -94,14 +95,14 @@ export default function SignIn() {
                                     required
                                     fullWidth
                                     name="password"
-                                    label="Password"
+                                    label="密码"
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
                                 />
                                 <FormControlLabel
                                     control={<Checkbox value="remember" color="primary"/>}
-                                    label="Remember me"
+                                    label="记住密码"
                                 />
                                 <Button
                                     type="submit"
@@ -110,19 +111,15 @@ export default function SignIn() {
                                     color="primary"
                                     className={classes.submit}
                                 >
-                                    Sign In
+                                    登录
                                 </Button>
                                 <Grid container>
                                     <Grid item xs>
                                         <Link href="#" variant="body2">
-                                            Forgot password?
+                                            忘记密码?
                                         </Link>
                                     </Grid>
-                                    <Grid item>
-                                        <Link href="#" variant="body2">
-                                            {"Don't have an account? Sign Up"}
-                                        </Link>
-                                    </Grid>
+
                                 </Grid>
                                 <Box mt={5}>
                                     <Copyright/>

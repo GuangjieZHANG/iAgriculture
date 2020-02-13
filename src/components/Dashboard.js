@@ -19,17 +19,17 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
 import Deposits from './Deposits';
-import Orders from './Orders';
 import ButtonBase from "@material-ui/core/ButtonBase";
+import NPKChart from "./NPKChart";
+import Info from "./Info";
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                智慧农业
+                新盒子智能科技有限公司
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -118,6 +118,7 @@ const useStyles = makeStyles(theme => ({
         display: 'block',
         maxWidth: '100%',
         maxHeight: '100%',
+        backgroundImage: `url(${"../img/video.jpg"})`,
     },
     image: {
         width: 480,
@@ -127,7 +128,7 @@ const useStyles = makeStyles(theme => ({
         height: 150,
     },
     flxedHeightChart: {
-        height: 280,
+        height: 480,
     },
     flxedHeightVideo: {
         height: 316,
@@ -192,117 +193,72 @@ export default function Dashboard() {
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={2}>
-                        <Grid item lg={6} container spacing={2}>
-
-                                {/* 土壤温度 */}
-                                <Grid item lg={4}>
-                                    <Paper className={fixedHeightPaper}>
-                                        <Deposits title="土壤温度" value="27 ℃"/>
-                                    </Paper>
-                                </Grid>
-                                {/* 土壤湿度 */}
-                                <Grid item lg={4}>
-                                    <Paper className={fixedHeightPaper}>
-                                        <Deposits title="土壤湿度 " value="71.3 %"/>
-                                    </Paper>
-                                </Grid>
-                                {/* 土壤酸碱度 */}
-                                <Grid item lg={4}>
-                                    <Paper className={fixedHeightPaper}>
-                                        <Deposits title="土壤酸碱度" value="6.5"/>
-                                    </Paper>
-                                </Grid>
-
-                                {/* 空气温度 */}
-                                <Grid item lg={4}>
-                                    <Paper className={fixedHeightPaper}>
-                                        <Deposits title="空气温度" value="13 ℃"/>
-                                    </Paper>
-                                </Grid>
-                                {/* 空气湿度 */}
-                                <Grid item lg={4}>
-                                    <Paper className={fixedHeightPaper}>
-                                        <Deposits title="空气湿度" value="53.3 %"/>
-                                    </Paper>
-                                </Grid>
-                                {/* 风向 */}
-                                <Grid item lg={4}>
-                                    <Paper className={fixedHeightPaper}>
-                                        <Deposits title="风向" value="东北风"/>
-                                    </Paper>
-                                </Grid>
-
-                        </Grid>
-
-                        {/* video */}
-                        <Grid item lg={6}>
+                        <Grid item lg={4}>
                             <Paper className={fixedHeightPaperVideo}>
-                                <ButtonBase className={classes.image}>
-                                    <img className={classes.img} alt="complex" src="../img/video.jpg" />
-                                </ButtonBase>
+                                <Info title = "陕西省榆林市米脂苹果园" geometry = "" surface = ""/>
                             </Paper>
                         </Grid>
 
+                        {/* video */}
+                        <Grid item lg={8}>
+                            <Paper className={fixedHeightPaperVideo}>
+                                <img className={classes.img} alt="complex" />
+                            </Paper>
+                        </Grid>
+
+                        <Grid item lg={8}>
+                            <Paper className={fixedHeightPaperChart}>
+
+                            </Paper>
+                        </Grid>
 
                             <Grid item lg={4}>
-                                <Paper className={fixedHeightPaperVideo}>
-
-                                </Paper>
-                            </Grid>
-
-                            <Grid item lg={8}>
-                                <Paper className={fixedHeightPaperVideo}>
-
-                                </Paper>
-                            </Grid>
-
-
-
-                            <Grid item lg={3}>
                                 <Paper className={fixedHeightPaperChart}>
-                                    <Chart title="1 "/>
-                                </Paper>
-                            </Grid>
-                            <Grid item lg={3}>
-                                <Paper className={fixedHeightPaperChart}>
-                                    <Chart title="2 "/>
-                                </Paper>
-                            </Grid>
-                            <Grid item lg={3}>
-                                <Paper className={fixedHeightPaperChart}>
-                                    <Chart title="3 "/>
-                                </Paper>
-                            </Grid>
-                            <Grid item lg={3}>
-                                <Paper className={fixedHeightPaperChart}>
-                                    <Chart title="4 "/>
+                                    <NPKChart/>
                                 </Paper>
                             </Grid>
 
 
-
-                            <Grid item lg={3}>
-                                <Paper className={fixedHeightPaperChart}>
-                                    <Chart title="1 "/>
+                        <Grid item lg={6} container spacing={2}>
+                            {/* 土壤温度 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <Deposits title="土壤温度" value="27 ℃"/>
                                 </Paper>
                             </Grid>
-                            <Grid item lg={3}>
-                                <Paper className={fixedHeightPaperChart}>
-                                    <Chart title="2 "/>
+                            {/* 土壤湿度 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <Deposits title="土壤湿度 " value="71.3 %"/>
                                 </Paper>
                             </Grid>
-                            <Grid item lg={3}>
-                                <Paper className={fixedHeightPaperChart}>
-                                    <Chart title="3 "/>
-                                </Paper>
-                            </Grid>
-                            <Grid item lg={3}>
-                                <Paper className={fixedHeightPaperChart}>
-                                    <Chart title="4 "/>
+                            {/* 土壤酸碱度 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <Deposits title="土壤酸碱度" value="6.5"/>
                                 </Paper>
                             </Grid>
 
+                            {/* 空气温度 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <Deposits title="空气温度" value="13 ℃"/>
+                                </Paper>
+                            </Grid>
+                            {/* 空气湿度 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <Deposits title="空气湿度" value="53.3 %"/>
+                                </Paper>
+                            </Grid>
+                            {/* 风向 */}
+                            <Grid item lg={4}>
+                                <Paper className={fixedHeightPaper}>
+                                    <Deposits title="风向" value="东北风"/>
+                                </Paper>
+                            </Grid>
 
+                        </Grid>
                     </Grid>
                     <Box pt={4}>
                         <Copyright />
