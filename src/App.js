@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import SignIn from "./page/SignIn";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./page/Dashboard";
 
 function App() {
   return (
