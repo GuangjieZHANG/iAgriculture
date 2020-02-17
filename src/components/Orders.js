@@ -29,12 +29,18 @@ const useStyles = makeStyles(theme => ({
     seeMore: {
         marginTop: theme.spacing(3),
     },
+    content: {
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto',
+        paddingTop: theme.spacing(10),
+    },
 }));
 
 export default function Orders() {
     const classes = useStyles();
     return (
-        <React.Fragment>
+        <main className={classes.content}>
             <Title>Recent Orders</Title>
             <Table size="small">
                 <TableHead>
@@ -63,6 +69,6 @@ export default function Orders() {
                     See more orders
                 </Link>
             </div>
-        </React.Fragment>
+        </main>
     );
 }

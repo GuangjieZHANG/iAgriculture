@@ -15,7 +15,9 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import Home from "../components/Home";
-import PropTypes from 'prop-types';
+import { Route } from "react-router-dom";
+import SignIn from "./SignIn";
+import Orders from "../components/Orders";
 
 const drawerWidth = 240;
 
@@ -95,7 +97,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Dashboard(props) {
+export default function Dashboard() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -105,7 +107,6 @@ export default function Dashboard(props) {
         setOpen(false);
     };
 
-    const { children } = props;
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -147,11 +148,12 @@ export default function Dashboard(props) {
                 <Divider />
                 <List>{secondaryListItems}</List>
             </Drawer>
-            <Home/>
+                <Route exact path="/dashboard" component={Home}>
+                </Route>
+                <Route exact path="/dashboard/source" component={Orders}>
+                </Route>
+
         </div>
     );
 };
 
-Dashboard.propTypes = {
-    children : PropTypes.node
-};

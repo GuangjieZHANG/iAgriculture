@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography/index';
 import { makeStyles } from '@material-ui/core/styles/index';
 import BGImage from "../img/loginBg.png";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
     return (
@@ -63,6 +64,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignIn() {
     const classes = useStyles();
+    let history = useHistory();
+    let signIn = () => {
+       // TODO verify identification here !!!
+        history.replace('dashboard')
+    };
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -110,6 +116,7 @@ export default function SignIn() {
                                     variant="contained"
                                     color="primary"
                                     className={classes.submit}
+                                    onClick={signIn}
                                 >
                                     登录
                                 </Button>
@@ -119,7 +126,6 @@ export default function SignIn() {
                                             忘记密码?
                                         </Link>
                                     </Grid>
-
                                 </Grid>
                                 <Box mt={5}>
                                     <Copyright/>

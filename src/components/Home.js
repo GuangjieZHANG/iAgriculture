@@ -101,7 +101,7 @@ export default function Home() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
             <Grid container spacing={2}>
-                <Grid item lg={6} container spacing={2}>
+                <Grid lg={6} container spacing={2} item>
                     {/* 土壤温度 */}
                     <Grid item lg={4}>
                         <Paper className={fixedHeightPaper}>
@@ -143,13 +143,13 @@ export default function Home() {
                 </Grid>
 
                 {/* video */}
-                <Grid item lg={6}>
+                <Grid lg={6} xs={12} item>
                     <Paper className={fixedHeightPaperVideo}>
-                        <Grid className={classes.img} lg={12} />
+                        <Grid className={classes.img} lg={12} xs={12} item />
                     </Paper>
                 </Grid>
 
-                <Grid item lg={8}>
+                <Grid item lg={8} xs={12} >
                     <Paper className={fixedHeightPaperChart}>
                         <LeafletMap/>
                     </Paper>
