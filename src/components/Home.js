@@ -1,5 +1,4 @@
-import Typography from "@material-ui/core/Typography/Typography";
-import Link from "@material-ui/core/Link/Link";
+import Copyright from "./Copyright";
 import {makeStyles} from "@material-ui/core";
 import VideoImage from "../img/video.jpg";
 import React from "react";
@@ -13,19 +12,6 @@ import Weather from "./Weather";
 import Info from "./Info";
 import Box from "@material-ui/core/Box/Box";
 import clsx from "clsx";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                新盒子智能科技有限公司
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 const drawerWidth = 240;
 

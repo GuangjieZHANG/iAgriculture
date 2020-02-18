@@ -1,7 +1,8 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
-import Title from './Title';
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import Title from "./Title";
+import Typography from "@material-ui/core/Typography";
 
 // Generate Sales Data
 function createData(time, amount) {
@@ -20,12 +21,13 @@ const data = [
     createData('24:00', undefined),
 ];
 
-export default function Chart(props) {
+export default function HistoryChart() {
     const theme = useTheme();
 
     return (
         <React.Fragment>
-            <Title>{props.title}</Title>
+            <Typography gutterBottom> _____________________________________________
+            </Typography>
             <ResponsiveContainer>
                 <LineChart
                     data={data}
@@ -33,7 +35,6 @@ export default function Chart(props) {
                         top: 16,
                         right: 16,
                         bottom: 0,
-                        left: 24,
                     }}
                 >
                     <XAxis dataKey="time" stroke={theme.palette.text.secondary} />

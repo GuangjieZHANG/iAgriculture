@@ -16,7 +16,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import Home from "../components/Home";
 import { Route } from "react-router-dom";
-import SignIn from "./SignIn";
+import History from "../components/History";
 import Orders from "../components/Orders";
 
 const drawerWidth = 240;
@@ -148,10 +148,10 @@ export default function Dashboard() {
                 <Divider />
                 <List>{secondaryListItems}</List>
             </Drawer>
-                <Route exact path="/dashboard" component={Home}>
-                </Route>
-                <Route exact path="/dashboard/source" component={Orders}>
-                </Route>
+
+            <Route exact path="/dashboard" component={Home}/>
+            <Route exact path="/dashboard/source" component={Orders}/>
+            <Route exact path="/dashboard/history" component={History}/>
 
         </div>
     );

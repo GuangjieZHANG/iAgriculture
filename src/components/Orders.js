@@ -7,6 +7,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
+import Box from "@material-ui/core/Box";
+import Copyright from "./Copyright";
+import Container from "@material-ui/core/Container";
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -69,6 +72,9 @@ export default function Orders() {
                     See more orders
                 </Link>
             </div>
+            <Box pt={4}>
+                <Copyright />
+            </Box>
         </main>
     );
 }

@@ -14,19 +14,7 @@ import Typography from '@material-ui/core/Typography/index';
 import { makeStyles } from '@material-ui/core/styles/index';
 import BGImage from "../img/loginBg.png";
 import { useHistory } from "react-router-dom";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                新盒子智能科技有限公司
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from "../components/Copyright";
 
 const useStyles = makeStyles(theme => ({
     root: {

@@ -32,12 +32,14 @@ export const mainListItems = (
 export const secondaryListItems = (
     <div>
         <ListSubheader inset>结点详细信息</ListSubheader>
+        <NavLink to="/dashboard/history">
         <ListItem button>
             <ListItemIcon>
                 <AssignmentIcon />
             </ListItemIcon>
             <ListItemText primary="结点一" />
         </ListItem>
+        </NavLink>
         <ListItem button>
             <ListItemIcon>
                 <AssignmentIcon />
