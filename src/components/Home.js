@@ -1,7 +1,7 @@
 import Copyright from "./Copyright";
 import {makeStyles} from "@material-ui/core";
 import VideoImage from "../img/video.jpg";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Container from "@material-ui/core/Container/Container";
 import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
@@ -12,6 +12,7 @@ import Weather from "./Weather";
 import Info from "./Info";
 import Box from "@material-ui/core/Box/Box";
 import clsx from "clsx";
+import {environment} from "../environments/environment";
 
 const drawerWidth = 240;
 
@@ -75,8 +76,23 @@ const useStyles = makeStyles(theme => ({
 
 export default function Home() {
 
-    const classes = useStyles();
+    const axios = require('axios').default;
 
+    const [device, setDevice] = useState("st1");
+    const [dataLine, setDataLine] = useState({});
+
+    useEffect(async () => {
+        // get climate data here
+
+        const result = await axios(
+            environment.apiServerURL + '/dataline/last/' + device
+        );
+        setDataLine(result.data);
+        console.log(result.data);
+    }, [device]);
+
+
+    const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     const fixedHeightPaperChart = clsx(classes.paper, classes.fixedHeightChart);
     const fixedHeightPaperVideo = clsx(classes.paper, classes.fixedHeightVideo);
@@ -91,38 +107,38 @@ export default function Home() {
                     {/* 土壤温度 */}
                     <Grid item lg={4}>
                         <Paper className={fixedHeightPaper}>
-                            <SimpleCard title="土壤温度" value="27 ℃"/>
+                            <SimpleCard title="土壤温度" value={dataLine.earthTempreture + " ℃"}/>
                         </Paper>
                     </Grid>
                     {/* 土壤湿度 */}
                     <Grid item lg={4}>
                         <Paper className={fixedHeightPaper}>
-                            <SimpleCard title="土壤湿度 " value="71.3 %"/>
+                            <SimpleCard title="土壤湿度 " value={dataLine.earthHumidity + "%"}/>
                         </Paper>
                     </Grid>
                     {/* 土壤酸碱度 */}
                     <Grid item lg={4}>
                         <Paper className={fixedHeightPaper}>
-                            <SimpleCard title="土壤酸碱度" value="6.5"/>
+                            <SimpleCard title="土壤酸碱度" value={dataLine.earthPh }/>
                         </Paper>
                     </Grid>
 
                     {/* 空气温度 */}
                     <Grid item lg={4}>
                         <Paper className={fixedHeightPaper}>
-                            <SimpleCard title="空气温度" value="13 ℃"/>
+                            <SimpleCard title="空气温度" value={dataLine.airTempreture + " ℃"}/>
                         </Paper>
                     </Grid>
                     {/* 空气湿度 */}
                     <Grid item lg={4}>
                         <Paper className={fixedHeightPaper}>
-                            <SimpleCard title="空气湿度" value="53.3 %"/>
+                            <SimpleCard title="空气湿度" value={dataLine.airHumidity + "%"}/>
                         </Paper>
                     </Grid>
                     {/* 风向 */}
                     <Grid item lg={4}>
                         <Paper className={fixedHeightPaper}>
-                            <SimpleCard title="风向" value="东北风"/>
+                            <SimpleCard title="风向" value={dataLine.wind + " ℃"}/>
                         </Paper>
                     </Grid>
 
@@ -137,7 +153,7 @@ export default function Home() {
 
                 <Grid item lg={8} xs={12} >
                     <Paper className={fixedHeightPaperChart}>
-                        <LeafletMap/>
+                        <LeafletMap device = "st1"/>
                     </Paper>
                 </Grid>
 

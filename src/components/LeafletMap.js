@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import L from 'leaflet';
 
+const mapCenter = {
+    "st1": [],
+    "st2": [],
+    "st3": [],
+    "st4": [],
+    "st5": [],
+};
 
 class LeafletMap extends Component {
 
@@ -8,6 +15,8 @@ class LeafletMap extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {device: props.device};
+        console.log("--------" + props.device)
     }
 
     componentDidMount() {
