@@ -39,10 +39,15 @@ export default function NPKChart(props) {
     const classes = useStyles();
     const theme = useTheme();
 
+    const total = props.n + props.p + props.k;
+    const n = (props.n / total).toPrecision(2);
+    const p = (props.p / total).toPrecision(2);
+    const k = (1 - n - p).toPrecision(2);
+
     const data = {
         datasets: [
             {
-                data: [63, 15, 22],
+                data: [n, p, k],
                 backgroundColor: [
                     theme.palette.primary.main,
                     theme.palette.error.main,
@@ -81,17 +86,17 @@ export default function NPKChart(props) {
     const devices = [
         {
             title: '氮元素',
-            value: '63',
+            value: props.n,
             color: theme.palette.primary.main
         },
         {
             title: '磷元素',
-            value: '15',
+            value: props.p,
             color: theme.palette.error.main
         },
         {
             title: '钾元素',
-            value: '23',
+            value: props.k,
             color: theme.palette.warning.main
         }
     ];
@@ -124,7 +129,7 @@ export default function NPKChart(props) {
                                 style={{ color: device.color }}
                                 variant="h4"
                             >
-                                {device.value}%
+                                {device.value}
                             </Typography>
                         </div>
                     ))}

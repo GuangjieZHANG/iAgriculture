@@ -91,6 +91,7 @@ export default function Home() {
         console.log(result.data);
     }, [device]);
 
+    const handleMarker1 = () => console.log("test...")
 
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -138,7 +139,7 @@ export default function Home() {
                     {/* 风向 */}
                     <Grid item lg={4}>
                         <Paper className={fixedHeightPaper}>
-                            <SimpleCard title="风向" value={dataLine.wind + " ℃"}/>
+                            <SimpleCard title="风向" value={dataLine.wind}/>
                         </Paper>
                     </Grid>
 
@@ -159,7 +160,7 @@ export default function Home() {
 
                 <Grid item lg={4}>
                     <Paper className={fixedHeightPaperChart}>
-                        <NPKChart/>
+                        <NPKChart n={dataLine.nitrogen} p={dataLine.phosphorus} k={dataLine.potassium}/>
                     </Paper>
                 </Grid>
                 <Grid item lg={3}>
