@@ -89,9 +89,13 @@ export default function Home() {
         );
         setDataLine(result.data);
         console.log(result.data);
-    }, [device]);
+    }, []);
 
-    const handleMarker1 = () => console.log("test...")
+    const handleMarker = (val) => {
+        setDevice(val);
+        console.log("---------You clicked at -------" + val);
+        console.log("---------device-------" + device);
+    };
 
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -154,7 +158,7 @@ export default function Home() {
 
                 <Grid item lg={8} xs={12} >
                     <Paper className={fixedHeightPaperChart}>
-                        <LeafletMap device = "st1"/>
+                        <LeafletMap device = "st1" handleMarker = {handleMarker.bind(this)}/>
                     </Paper>
                 </Grid>
 
@@ -175,7 +179,7 @@ export default function Home() {
                 </Grid>
                 <Grid item lg={6}>
                     <Paper className={fixedHeightPaperWeather}>
-                        <Info title="陕西省榆林市米脂苹果园" geometry="" surface=""/>
+                        <Info title="陕西省榆林市米脂苹果园" geometry="榆林市米脂县***村" surface="36 平方千米"/>
                     </Paper>
                 </Grid>
             </Grid>

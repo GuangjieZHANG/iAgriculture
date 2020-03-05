@@ -36,11 +36,11 @@ class LeafletMap extends Component {
         const st3 = L.marker(mapCenter.st3).addTo(this.leafletMap).bindPopup('结点三').openPopup();
         const st4 = L.marker(mapCenter.st4).addTo(this.leafletMap).bindPopup('结点四').openPopup();
         const st5 = L.marker(mapCenter.st5).addTo(this.leafletMap).bindPopup('结点五').openPopup();
-        st1.on('click', () => this.props.handleMarker1);
-        st2.on('click', () => console.log("I am clicked! st2"));
-        st3.on('click', () => console.log("I am clicked! st3"));
-        st4.on('click', () => console.log("I am clicked! st4"));
-        st5.on('click', () => console.log("I am clicked! st5"));
+        st1.on('click', () => {this.setState({device: "str1"}); this.props.handleMarker("str1"); });
+        st2.on('click', () => {this.setState({device: "str2"}); this.props.handleMarker("str2"); });
+        st3.on('click', () => {this.setState({device: "str3"}); this.props.handleMarker("str3"); });
+        st4.on('click', () => {this.setState({device: "str4"}); this.props.handleMarker("str4"); });
+        st5.on('click', () => {this.setState({device: "str5"}); this.props.handleMarker("str5"); });
 
     }
 
