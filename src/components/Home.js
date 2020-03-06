@@ -80,21 +80,22 @@ export default function Home() {
 
     const [device, setDevice] = useState("st1");
     const [dataLine, setDataLine] = useState({});
+    const [url, setUrl] = useState(environment.apiServerURL + '/dataline/last/' + device);
 
-    useEffect(async () => {
-        // get climate data here
-
-        const result = await axios(
-            environment.apiServerURL + '/dataline/last/' + device
-        );
+    async function init(){
+        const result = await axios(url);
         setDataLine(result.data);
-        console.log(result.data);
-    }, []);
+        // console.log(result.data);
+    }
+
+    useEffect(() => {
+        // get climate data here
+        init();
+    }, [url]);
 
     const handleMarker = (val) => {
         setDevice(val);
-        console.log("---------You clicked at -------" + val);
-        console.log("---------device-------" + device);
+        setUrl(environment.apiServerURL + '/dataline/last/'+val);
     };
 
     const classes = useStyles();
