@@ -150,8 +150,8 @@ export default function Dashboard() {
             </Drawer>
 
             <Route exact path="/dashboard" component={Home}/>
-            <Route exact path="/dashboard/source" component={Orders}/>
-            <Route exact path="/dashboard/history" component={History}/>
+            <Route exact path="/dashboard/alert" component={Orders}/>
+            <Route exact path="/dashboard/history/:device" component={History}/>
 
         </div>
     );
