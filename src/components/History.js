@@ -43,7 +43,7 @@ function createData(time, amount) {
     return { time, amount };
 }
 
-export default function History(props) {
+export default function History() {
 
     const classes = useStyles();
     const axios = require('axios').default;
@@ -60,24 +60,23 @@ export default function History(props) {
     const [earthPData, setEarthPData] = useState([]);
     const [earthKData, setEarthKData] = useState([]);
 
-    async function init() {
+    async function getData() {
         const result = await axios(url);
         result.data.map((line) => {
             setEarthTemData(earthTemData.push(createData(line.time.substr(11,5),line.earthTempreture)));
-            setEarthHumData(earthHumData.push(createData(line.time.substr(11,5),line.earthHumidity)));
+            /*setEarthHumData(earthHumData.push(createData(line.time.substr(11,5),line.earthHumidity)));
             setEarthPhData(earthPhData.push(createData(line.time.substr(11,5),line.earthPh)));
             setAirTemData(airTemData.push(createData(line.time.substr(11,5),line.airTempreture)));
             setAirHumData(airHumData.push(createData(line.time.substr(11,5),line.airHumidity)));
             setEarthNData(earthNData.push(createData(line.time.substr(11,5),line.nitrogen)));
             setEarthPData(earthPData.push(createData(line.time.substr(11,5),line.phosphorus)));
-            setEarthKData(earthKData.push(createData(line.time.substr(11,5),line.potassium)));
-            console.log("-------------"+earthTemData);
+            setEarthKData(earthKData.push(createData(line.time.substr(11,5),line.potassium)));*/
         });
         /*createData(dataline.time,dataline.earthTempreture)*/
     }
 
     useEffect(()=> {
-        init();
+        getData();
     },[url]);
 
     const fixedHeightPaperChart = clsx(classes.paper, classes.fixedHeightChart);
@@ -87,59 +86,59 @@ export default function History(props) {
             <div className={classes.appBarSpacer} />
             <Container maxWidth="lg" className={classes.container}>
                 <Grid container spacing={2}>
-                    <Grid item lg={4}>
+                    <Grid item lg={4} sm={4}>
                         <Paper className={fixedHeightPaperChart}>
                            <Title>土壤温度</Title>
-                           <HistoryChart data={earthTemData}/>
+                           <HistoryChart dataSource={earthTemData}/>
                         </Paper>
                     </Grid>
 
-                    <Grid item lg={4}>
+                    <Grid item lg={4} sm={4}>
                         <Paper className={fixedHeightPaperChart}>
                             <Title>土壤湿度</Title>
-                            <HistoryChart data={earthHumData}/>
+                            <HistoryChart dataSource={earthHumData}/>
                         </Paper>
                     </Grid>
 
-                    <Grid item lg={4}>
+                    <Grid item lg={4} sm={4}>
                         <Paper className={fixedHeightPaperChart}>
                             <Title>土壤酸碱度</Title>
-                            <HistoryChart data={earthPhData}/>
+                            <HistoryChart dataSource={earthPhData}/>
                         </Paper>
                     </Grid>
 
-                    <Grid item lg={4}>
+                    <Grid item lg={4} sm={4}>
                         <Paper className={fixedHeightPaperChart}>
                             <Title>土壤氮含量</Title>
-                            <HistoryChart data={earthNData}/>
+                            <HistoryChart dataSource={earthNData}/>
                         </Paper>
                     </Grid>
-                    <Grid item lg={4}>
+                    <Grid item lg={4} sm={4}>
                         <Paper className={fixedHeightPaperChart}>
                             <Title>土壤磷含量</Title>
-                            <HistoryChart data={earthPData}/>
+                            <HistoryChart dataSource={earthPData}/>
                         </Paper>
                     </Grid>
 
-                    <Grid item lg={4}>
+                    <Grid item lg={4} sm={4}>
                         <Paper className={fixedHeightPaperChart}>
                             <Title>土壤钾含量</Title>
-                            <HistoryChart data={earthKData}/>
+                            <HistoryChart dataSource={earthKData}/>
                         </Paper>
                     </Grid>
 
 
-                    <Grid item lg={4}>
+                    <Grid item lg={4} sm={4}>
                         <Paper className={fixedHeightPaperChart}>
                             <Title>空气温度</Title>
-                            <HistoryChart data={airTemData}/>
+                            <HistoryChart dataSource={airTemData}/>
                         </Paper>
                     </Grid>
 
-                    <Grid item lg={4}>
+                    <Grid item lg={4} sm={4}>
                         <Paper className={fixedHeightPaperChart}>
                             <Title>空气湿度</Title>
-                            <HistoryChart data={airHumData}/>
+                            <HistoryChart dataSource={airHumData}/>
                         </Paper>
                     </Grid>
 

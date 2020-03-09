@@ -81,16 +81,22 @@ export default function Home() {
     const [device, setDevice] = useState("st1");
     const [dataLine, setDataLine] = useState({});
     const [url, setUrl] = useState(environment.apiServerURL + '/dataline/last/' + device);
+    const [tomorrow, setTomorrow] = useState({});
+    const [afterTomorrow, setAfterTomorrow] = useState({});
 
-    async function init(){
+    async function getData(){
         const result = await axios(url);
         setDataLine(result.data);
+        const weather = await axios.get(environment.weatherURL, {params: {location: "mizhi", key: environment.weatherKey}});
+        setTomorrow(weather.data.HeWeather6[0].daily_forecast[1]);
+        console.log("----------------" + weather.data.HeWeather6[0].daily_forecast[1].wind_dir);
+        setAfterTomorrow(weather.data.HeWeather6[0].daily_forecast[2]);
         // console.log(result.data);
     }
 
     useEffect(() => {
         // get climate data here
-        init();
+        getData();
     }, [url]);
 
     const handleMarker = (val) => {
@@ -170,12 +176,16 @@ export default function Home() {
                 </Grid>
                 <Grid item lg={3}>
                     <Paper className={fixedHeightPaperWeather}>
-                        <Weather title="明日天气" temperature="2 ~ 8" possibility="35" wind="偏东风3级"/>
+                        <Weather date={tomorrow.date} cond_d={tomorrow.cond_txt_d} cond_n={tomorrow.cond_txt_n} humidity={tomorrow.hum}
+                                 temperature={tomorrow.tmp_min + " ~ " + tomorrow.tmp_max}
+                                 possibility={tomorrow.pop} wind={tomorrow.wind_dir + tomorrow.wind_sc + "级"}/>
                     </Paper>
                 </Grid>
                 <Grid item lg={3}>
                     <Paper className={fixedHeightPaperWeather}>
-                        <Weather title="后日天气" temperature="4 ~ 7" possibility="41" wind="东北风4级"/>
+                        <Weather date={afterTomorrow.date} cond_d={afterTomorrow.cond_txt_d} cond_n={afterTomorrow.cond_txt_n}
+                                 humidity={afterTomorrow.hum} temperature={afterTomorrow.tmp_min + " ~ " + afterTomorrow.tmp_max}
+                                 possibility={afterTomorrow.pop} wind={afterTomorrow.wind_dir + afterTomorrow.wind_sc + "级"}/>
                     </Paper>
                 </Grid>
                 <Grid item lg={6}>

@@ -9,7 +9,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 import Box from "@material-ui/core/Box";
 import Copyright from "./Copyright";
-import Container from "@material-ui/core/Container";
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {

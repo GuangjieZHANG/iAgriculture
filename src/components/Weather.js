@@ -20,10 +20,15 @@ export default function Weather(props) {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Title>{props.title}</Title>
-            <WeatherIcon name="owm" iconId="200" flip="horizontal" rotate="90" className={classes.weatherIcon}/>
+            <Title>{props.date}天气</Title>
+            <Typography component="p" variant="h6">
+                {props.cond_d} 转 {props.cond_n}
+            </Typography>
             <Typography component="p" variant="h6">
                 气温： {props.temperature} ℃
+            </Typography>
+            <Typography component="p" variant="h6">
+                空气湿度： {props.humidity}%
             </Typography>
             <Typography component="p" variant="h6">
                 降水概率： {props.possibility}%

@@ -7,23 +7,21 @@ function createData(time, amount) {
     return { time, amount };
 }
 
-const data = [
-    createData('00:00', 0),
-    createData('03:00', 300),
-    createData('06:00', 600),
-    createData('09:00', 800),
-    createData('12:00', 1500),
-    createData('15:00', 2000),
-    createData('18:00', 2400),
-    createData('21:00', 2400),
-    createData('24:00', undefined),
+let data = [
+    createData('15:41', 17),
+    createData('16:41', 100),
+    createData('17:41', 100),
+    createData('18:41', 100),
+    createData('19:41', 100),
+    createData('20:41', 200),
+    createData('21:41', 200),
 ];
 
 export default function HistoryChart(props) {
     const theme = useTheme();
 
     useEffect(()=> {
-        console.log(props.data);
+        console.log(props.dataSource);
         console.log(data)
     },[]);
 
@@ -31,7 +29,7 @@ export default function HistoryChart(props) {
         <React.Fragment>
             <ResponsiveContainer>
                 <LineChart
-                    data={props.data}
+                    data={props.dataSource}
                     margin={{
                         top: 16,
                         right: 16,
